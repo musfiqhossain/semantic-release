@@ -11,5 +11,8 @@
     },
     "scripts": {
         "test": "jest test.js"
+    },
+    "dependencies": {
+        "ci": "^2.2.0"
     }
 }
