@@ -1,0 +1,21 @@
+name: Testing Slack
+
+on:
+  pull_request:
+
+env:
+  NODE_VERSION: 16.3.0
+  # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  semantic:
+    name: Semantic
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Semantic release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          semantic_version: 18.0.0
