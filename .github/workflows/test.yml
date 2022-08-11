@@ -8,8 +8,29 @@ env:
   # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
+  install:
+    name: Install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Use node_modules cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-v1-${{ hashFiles('**/package.json') }}
+
+      - name: Install dependencies
+        run: yarn install
   semantic:
     name: Semantic
+    needs: [install]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
