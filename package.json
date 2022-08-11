@@ -1,0 +1,18 @@
+{
+    "name": "semantic-release",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/musfiqhossain/semantic-release.git",
+    "author": "Musfiq Hossain <musfiq.hossain@cbsinteractive.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "jest": "^25.1.0",
+        "semantic-release": "^17.0.4"
+    },
+    "scripts": {
+        "test": "jest test.js"
+    },
+    "dependencies": {
+        "ci": "^2.2.0"
+    }
+}
