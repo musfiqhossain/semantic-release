@@ -1,45 +1,50 @@
 {
-  "name": "semantic-release",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/musfiqhossain/semantic-release.git",
-  "author": "Musfiq Hossain <musfiq.hossain@cbsinteractive.com>",
-  "license": "MIT",
-  "release": {
-    "branches": [
-        "main"
-    ],
-    "plugins": [
-        "@semantic-release/commit-analyzer",
-        "@semantic-release/release-notes-generator",
-        "@semantic-release/changelog",
-        "@semantic-release/github",
-        [
-            "semantic-release-slack-bot",
-            {
-                "notifyOnSuccess": false,
-                "packageName": "Site Bison",
-                "notifyOnFail": false,
-                "slackWebhook": "https://hooks.slack.com/services/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",
-                "markdownReleaseNotes": true,
-                "dryRun": false,
-                "onSuccessTemplate": {
-                    "text": "A new version of $package_name with version $npm_package_version has been released at $repo_url!"
+    "name": "semantic-release",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/musfiqhossain/semantic-release.git",
+    "author": "Musfiq Hossain <musfiq.hossain@cbsinteractive.com>",
+    "license": "MIT",
+    "release": {
+        "branches": [
+            "main"
+        ],
+        "plugins": [
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/release-notes-generator",
+            "@semantic-release/changelog",
+            "@semantic-release/github",
+            [
+                "semantic-release-github-pullrequest", {
+                    "assets": ["CHANGELOG.md"],
+                    "baseRef": "main"
                 },
-                "branchesConfig": [
-                    {
-                        "pattern": "main",
-                        "notifyOnSuccess": true,
-                        "notifyOnFail": false
-                    }
-                ]
-            }
+                "semantic-release-slack-bot",
+                {
+                    "notifyOnSuccess": false,
+                    "packageName": "Site Bison",
+                    "notifyOnFail": false,
+                    "slackWebhook": "https://hooks.slack.com/services/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",
+                    "markdownReleaseNotes": true,
+                    "dryRun": false,
+                    "onSuccessTemplate": {
+                        "text": "A new version of $package_name with version $npm_package_version has been released at $repo_url!"
+                    },
+                    "branchesConfig": [
+                        {
+                            "pattern": "main",
+                            "notifyOnSuccess": true,
+                            "notifyOnFail": false
+                        }
+                    ]
+                }
+            ]
         ]
-    ]
-  },
-  "devDependencies": {
-    "@semantic-release/changelog": "^6.0.1",
-    "semantic-release": "^19.0.3",
-    "semantic-release-slack-bot": "^3.5.3"
-  }
+    },
+    "devDependencies": {
+        "@semantic-release/changelog": "^6.0.1",
+        "semantic-release": "^19.0.3",
+        "semantic-release-github-pullrequest": "^1.3.0",
+        "semantic-release-slack-bot": "^3.5.3"
+    }
 }
