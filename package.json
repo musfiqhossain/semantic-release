@@ -5,6 +5,11 @@
     "repository": "https://github.com/musfiqhossain/semantic-release.git",
     "author": "Musfiq Hossain <musfiq.hossain@cbsinteractive.com>",
     "license": "MIT",
+    "release": {
+        "branches": [
+            "main"
+        ]
+    },
     "devDependencies": {
         "jest": "^25.1.0",
         "semantic-release": "^17.0.4"
